@@ -1,13 +1,12 @@
-import { Stack } from 'expo-router';
-import 'react-native-reanimated';
-
-import { User } from "@/types/userData";
 import { UserData } from "@/types/userTypes";
-import { createContext, useContext, useState } from "react";
+import { User } from "@/types/userData";
+import { createContext, useState, useContext } from "react";
 
 const UserContext = createContext<UserData | undefined>(undefined);
 
-export default function RootLayout() {
+export const UserContextProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [users, setUser] = useState<User>({ id: 0, name: "", surname: "", email: "", role: "" });
 
   const updateUser = (newUser: User) => {
@@ -20,11 +19,9 @@ export default function RootLayout() {
   };
 
   return (
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="auth" options={{ headerShown: false }} />
-          <Stack.Screen name="index" />
-          <Stack.Screen name='user' options={{ headerShown: false }} />
-        </Stack>
+    <UserContext.Provider value={userValue}>
+      {children}
+    </UserContext.Provider>
   );
 }
 
