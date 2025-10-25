@@ -6,16 +6,17 @@ import React from "react";
 export default function UserLayout() {
     return (
         <Tabs>
-            <Tabs.Screen name="user/dashboard" options={{
+            <Tabs.Screen name="index" options={{
                 title: 'Your Bookings',
                 headerShown: false,
                 tabBarLabel: 'Your Bookings',
                 tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />
             }} />
-            <Tabs.Screen name="user/notifications" options={{
+            <Tabs.Screen name="exhibitions" options={{
                 title: 'Browse Exhibitions',
                 headerShown: false,
                 tabBarLabel: 'Browse Exhibitions',
+                
                 tabBarIcon: ({ color, size }) => <Ionicons name="notifications" size={size} color={color} />    
             }} />
             <Tabs.Screen name="auth/login" options={{

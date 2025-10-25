@@ -26,14 +26,14 @@ export default function LoginScreen() {
             const userData = response.data;
             if (response.status === 200 || response.status === 201) {
                 
-                AsyncStorage.setItem('@name', userData.name);
-                AsyncStorage.setItem('@surname', userData.surname);
-                AsyncStorage.setItem('@role', userData.role);
-                AsyncStorage.setItem('@token', userData.token);
-                AsyncStorage.setItem('@userId', userData.id.toString());
+                await AsyncStorage.setItem('@name', userData.name);
+                await AsyncStorage.setItem('@surname', userData.surname);
+                await AsyncStorage.setItem('@role', userData.role);
+                await AsyncStorage.setItem('@token', userData.token);
+                await AsyncStorage.setItem('@userId', userData.id.toString());
                 console.log('Login successful:', userData);
                 //user.setUser(userData);
-                router.push('/user/dashboard');
+                router.push('./user/');
             } else {
                 setMessage('Invalid email or password');
                 console.log('Login failed with status:', response.status);
